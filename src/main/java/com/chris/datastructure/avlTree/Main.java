@@ -1,10 +1,8 @@
 package com.chris.datastructure.avlTree;
-import com.chris.datastructure.bst.BST;
 import com.chris.datastructure.common.FileOperation;
 import com.chris.datastructure.map.BSTMap;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class Main {
 
@@ -13,7 +11,7 @@ public class Main {
         System.out.println("Pride and Prejudice");
 
         ArrayList<String> words = new ArrayList<>();
-        if(FileOperation.readFile("pride-and-prejudice.txt", words)) {
+        if(FileOperation.readFile("static/pride-and-prejudice.txt", words)) {
             System.out.println("Total words: " + words.size());
 
             // Collections.sort(words);
@@ -56,6 +54,8 @@ public class Main {
 
             time = (endTime - startTime) / 1000000000.0;
             System.out.println("AVL: " + time + " s");
+        }else{
+            System.out.println("something wrong");
         }
 
         System.out.println();
