@@ -1,19 +1,16 @@
-package temp;
+package com.chris.datastructure.leetcode.map;
 
-import com.chris.datastructure.Array;
-import com.chris.datastructure.Stack.LinkedListStack;
-import com.chris.datastructure.queue.ArrayQueue;
-import com.chris.datastructure.queue.LoopQueue;
-import com.chris.datastructure.queue.Queue;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.TreeMap;
 
-import java.util.*;
-import java.util.stream.Collectors;
-
-public class Test {
+//求两个数组间的交集，重复几次就显示几次
+public class Problem350 {
 
     public static void main(String[] args){
         int[] a = {1,2,2,1};
-        int[] b = {2};
+        int[] b = {2,2};
         Arrays.stream(intersect(a,b)).forEach(n->System.out.println(n));
     }
 
@@ -41,4 +38,3 @@ public class Test {
         return re.stream().mapToInt(Integer::new).toArray();
     }
 }
-

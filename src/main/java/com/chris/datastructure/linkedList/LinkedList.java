@@ -75,7 +75,7 @@ public class LinkedList<E> {
             throw new IllegalArgumentException("Add failed. Illeagle index.");
         }
         Node prev = dummyHead;
-        if(index == size){
+        if(index == size){ // 如果添加到最后，tail后移一位
             prev = size == 0 ? dummyHead : tail;
             prev.next = new Node(e,prev.next,prev);
             tail = prev.next;
@@ -185,7 +185,8 @@ public class LinkedList<E> {
             throw new IllegalArgumentException("Remove failed. Illegal index.");
         }
         Node prev = dummyHead;
-        if(index == size-1){
+
+        if(index == size-1){ // 如果删除的是最后一个元素，tail变成tail.prev
             prev = tail.prev;
             tail = size==1 ? null : prev;
         } else {
@@ -221,6 +222,34 @@ public class LinkedList<E> {
      */
     public E removeLast(){
         return remove(size-1);
+    }
+
+    /**
+     * 删除链表中指定元素e
+     * @param e
+     */
+    public void removeElement(E e){
+        Node cur = dummyHead.next;
+        while (cur != null){
+            if(cur.e.equals(e)){
+                Node prev = cur.prev;
+
+                prev.next = cur.next;
+                cur.next = null;
+
+                if(prev.next!=null){
+                    prev.next.prev = prev;
+                }else{ //如果prev.next==null，则说明删除的cur是最后一位，tail需要前移到prev
+                    tail = prev;
+                }
+                cur.prev = null;
+                size--;
+                cur = prev.next;
+            }else {
+                cur = cur.next;
+            }
+
+        }
     }
 
     @Override
